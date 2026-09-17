@@ -5,7 +5,7 @@ require("dotenv").config()
 const app = express();
 const port = process.env.PORT || 4000
 
-// Middleware to parse JSON requests
+// IMP ==> Middleware to parse JSON requests
 app.use(express.json());
 
 
@@ -13,14 +13,7 @@ app.use(express.json());
 
 app.post("/signup", async (req, res) => {
 
-  const user = new User({
-    firstName: "vijay",
-    lastName: "sikarwar",
-    emailID: "vijay@gmail.com",
-    password: "vijay12",
-
-
-  })
+  const user = new User(req.body)
 
   await user.save()
 
